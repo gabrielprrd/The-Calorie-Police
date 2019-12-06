@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'typeface-roboto';
+import { BrowserRouter, Route } from 'react-router-dom'
+import { Container } from '@material-ui/core'
+import './App.css'
 
-function App() {
+// Components
+import NavBar from './components/NavBar'
+import UserPage from './components/UserPage/UserPage'
+import DietSearcher from './components/DietSearcher/DietSearcher'
+import MealPlan from './components/MealPlan/MealPlan'
+// import Footer from './components/Footer'
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+        <div className="App">
+          <NavBar />
+          <Container>
+            <Route exact path="/" component={UserPage} />
+            <Route path="/food" component={DietSearcher} />
+            <Route path="/meal-plan" component={MealPlan} />
+          </Container>
+          {/* <Footer /> */}
+        </div>
+      </BrowserRouter>
   );
 }
-
-export default App;

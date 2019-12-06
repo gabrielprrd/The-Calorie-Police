@@ -1,0 +1,30 @@
+Diretivas do projeto
+
+- React transition group pra aplicar uma pequena transição entre as páginas
+- Copiar os textos do yazio.com e fazer umas tabs pra ter mais conteúdo abaixo do form
+- Criar um modal de boas vindas. Se o usuário já preencheu o form, esse modal dá "Welcome, [nome do usuário]"
+
+FASE 1
+O usuário vai preencher um formulário com nome (opcional), sexo, nível de atividade, peso e altura. O app calcula o Valor Energético Total e salva essas informações no Local Storage.
+
+Taxa de metabolismo basal
+TMB Mulher= 655,1 + (9,5 x Peso (kg)) + (1,8 x Altura (cm)) – (4,7 x Idade)
+TMB Homem= 66,5 + (13,8 x Peso (kg)) + (5 x Altura (cm)) – (6,8 x Idade)
+
+Nível de atividade física
+Sedentário = 1,2
+Exercício físico leve ou prática desportiva 1-3 dias/semana = 1,375
+Exercício físico moderado ou prática desportiva 3-5 dias/semana = 1,550
+Exercício físico intenso ou prática desportiva 6-7 dias/semana = 1,725
+
+Valor Energético Total = Taxa de Metabolismo Basal x Factor de Atividade
+
+----------------
+FASE 2
+Depois que tudo for implementado corretamente, usarei a API do spoonacular para calcular se o alimento pode ser incluído na dieta do usuário.
+
+O usuário pode pesquisar alimentos que terão seus valores nutricionais mostrados numa tabela interativa, onde podem ser excluídos, somados etc. Esses alimentos podem ter a quantidade da porção alterada e serem salvos. Uma conta simples vai informar ao usuário se a soma da lista está dentro do limite calórico.
+
+------------------
+FASE 3
+Talvez utilizar o recurso do spoonacular para sugerir dietas prontas de acordo com as calorias diárias
