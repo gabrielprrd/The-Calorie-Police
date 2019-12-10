@@ -3,8 +3,6 @@ import { INITIAL_FOODLIST, apiKey } from '../../store'
 import axios from 'axios'
 import DietForm from './DietForm'
 import DietResults from './DietResults'
-// https://api.spoonacular.com/recipes/search?query=cheese&number=2?apiKey=37d5be3315dc4a78acc31544ec2f7a84
-
 
 export class DietSearcher extends Component {
 
@@ -31,6 +29,26 @@ export class DietSearcher extends Component {
             })
     }
 
+    seeMoreInfo = (id) => {
+        axios.get(` https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${apiKey}`)
+            .then(res => {
+                const recipeid = res.data.id 
+                const result = res.data.nutrition.nutrients.map(nutrient => {
+                   return {
+                    title: nutrient.title,
+                    amount: nutrient.amount
+                   }
+                })
+                this.setState({
+                    moreInfoRecipe: {
+                        moreInfoResult: result,
+                        recipeid: recipeid,
+                        isMoreInfoShown: true
+                    }
+                })
+            })
+    }
+
     // saveRecipe = (e) => {
     //     if (typeof(Storage) !== "undefined") {
     //         localStorage.setItem('@calorie-police/userRecipes', JSON.stringify(this.state.savedRecipes));
@@ -43,7 +61,7 @@ export class DietSearcher extends Component {
                 <h1></h1>
                 <p>Search and add the recipe you want and we will tell you if it fits your daily caloric need</p>
                 <DietForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
-                { this.state.isFoodShown && <DietResults food={this.state.food} /> }
+                { this.state.isFoodShown && <DietResults food={this.state.food} seeMoreInfo={this.seeMoreInfo} moreInfoRecipe={this.state.moreInfoRecipe} /> }
             </div>
         )
     }
