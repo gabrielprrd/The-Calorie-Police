@@ -4,9 +4,9 @@ const UserForm = ({handleChange, handleSubmit, errorMsgs}) => {
 
         return (
             <form onSubmit={handleSubmit}>
-                {/* <label htmlFor="name">Your name:</label> */}
+
                 <input type="text" id="name" placeholder="Your name" onChange={handleChange} />
-                {  <div className="errorDiv">{errorMsgs.nameError}</div> }
+                <div className="errorDiv">{errorMsgs.nameError}</div>
 
                 <p>Your gender:</p>
                 <label>
@@ -17,20 +17,21 @@ const UserForm = ({handleChange, handleSubmit, errorMsgs}) => {
                     <p>Woman</p>
                     <input type="radio" id="gender" value="female" onChange={handleChange} />
                 </label>
+                <div className="errorGender">{errorMsgs.genderError}</div>
                 
                 <label htmlFor="height">Your height:</label>
                 <input type="number" id="height" onChange={handleChange} />
-                {  <div className="errorDiv">{errorMsgs.heightError}</div> }
+                <div className="errorDiv">{errorMsgs.heightError}</div>
 
         
                 <label htmlFor="weight">Your weight:</label>                    
                 <input type="number" id="weight" onChange={handleChange} />
-                {  <div className="errorDiv">{errorMsgs.weightError}</div> }
+                <div className="errorDiv">{errorMsgs.weightError}</div>
 
 
                 <label htmlFor="age">Your age:</label>
                 <input type="number" id="age" onChange={handleChange} />
-                {  <div className="errorDiv">{errorMsgs.ageError}</div> }
+                <div className="errorDiv">{errorMsgs.ageError}</div>
 
 
                 <label htmlFor="activity">Exercise level:</label>

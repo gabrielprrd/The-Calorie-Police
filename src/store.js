@@ -10,18 +10,29 @@ export const INITIAL_USERINFO = {
     isSubmitted: false,
     errorMsgs: {
         nameError: '',
+        genderError: '',
         heightError: '',
         weightError: '',
         ageError: '',
     }
 }
 
-export const INITIAL_FOODLIST = {}
+export const INITIAL_FOODLIST = {
+    query: '',
+    food: null,
+    savedRecipes: [],
+    isFoodShown: false,
+}
 
 export const INITIAL_MEAL_PLAN = {
     food: null,
-    isMealShown: false,
-    timeFrame: 'day'
+    isMealShown: false
+}
+
+export const MORE_INFO_RECIPE = {
+    moreInfoResult: null,
+    recipeid: null,
+    isMoreInfoShown: false
 }
 
 export const apiKey = '37d5be3315dc4a78acc31544ec2f7a84'

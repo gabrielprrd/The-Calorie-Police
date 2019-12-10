@@ -1,28 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { INITIAL_MEAL_PLAN } from '../../store'
-import { apiKey } from '../../store'
-import MealPlanDayResults from './MealPlanDayResults'
-import MealPlanWeekResults from './MealPlanWeekResults'
-import MealPlanForm from './MealPlanForm'
-
-
+import { INITIAL_MEAL_PLAN, apiKey } from '../../store'
+import MealPlanResults from './MealPlanResults'
 
 export class MealPlan extends Component {
 
     state = INITIAL_MEAL_PLAN
 
-    handleTimeFrameChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
-    }
-
     showMeals = (e) => {
         e.preventDefault();
         const dailyCalories = JSON.parse(localStorage.getItem('@calorie-police/userInfo')).dailyCalories;
 
-        const endpoint = `https://api.spoonacular.com/recipes/mealplans/generate?timeFrame=${this.state.timeFrame}&targetCalories=${dailyCalories}&apiKey=${apiKey}`
+        const endpoint = `https://api.spoonacular.com/recipes/mealplans/generate?timeFrame=day&targetCalories=${dailyCalories}&apiKey=${apiKey}`
         axios.get(endpoint)
             .then(res => {
                 const meals = res.data;
@@ -39,14 +28,11 @@ export class MealPlan extends Component {
 
         return (
             <div>
-                <h1>We suggest complete meal plans for your caloric needs!</h1>
-                <MealPlanForm handleTimeFrameChange={this.handleTimeFrameChange} showMeals={this.showMeals} />
-
-                {/* Displays weekly meal plans */}
-                { this.state.isMealShown && this.state.timeFrame === 'week' && <MealPlanWeekResults meals={this.state.food.items} /> }
+                <h1>We suggest daily meal plans for your caloric needs!</h1>
+                <button onClick={this.showMeals} type="submit">Show me!</button>
                 
-                {/* Displays daily meal plans */}
-                { this.state.isMealShown && this.state.timeFrame === 'day' && <MealPlanDayResults meals={this.state.food.meals} nutrients={this.state.food.nutrients} /> } 
+                {/* Displays meal plans */}
+                { this.state.isMealShown && <MealPlanResults meals={this.state.food.meals} nutrients={this.state.food.nutrients} /> } 
             </div>
         )
     }

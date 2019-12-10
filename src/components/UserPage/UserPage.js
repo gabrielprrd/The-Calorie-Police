@@ -34,18 +34,20 @@ class UserPage extends Component {
     }
 
     validate = () => {
-        const { name, weight, height, age } = this.state;
+        const { name, gender, weight, height, age } = this.state;
 
         let nameError = '';
+        let genderError = 'You must select a gender';
         let heightError = 'Your height should be higher than zero';
         let weightError = 'Your weight should be higher than zero';
         let ageError = 'Please insert a valid age';
         
+        /* check name */
         if (name === '' || name.match(/^(\w+\S+)$/) !== null) {
             nameError = 'Please insert your name'
         }
 
-        if (name.match(/[0-9]/) != null) {
+        if (name.match(/[0-9]/) !== null) {
             nameError = 'Your name should contain only letters'
         }  
 
@@ -59,7 +61,19 @@ class UserPage extends Component {
             return false
         }
 
-            if (height <= 0 || height === null) {
+        /* check gender */
+        if (gender === null) {
+            this.setState(prevState => ({
+                errorMsgs: {
+                    ...prevState,
+                    genderError
+                }
+            }))
+            return false
+        }
+        
+        /* check height */
+        if (height <= 0 || height === null) {
             this.setState(prevState => ({
                 errorMsgs: {
                     ...prevState,
@@ -69,6 +83,7 @@ class UserPage extends Component {
             return false
         }
 
+        /* check weight */
         if (weight <= 0 || weight === null) {
             this.setState(prevState => ({
                 errorMsgs: {
@@ -79,6 +94,7 @@ class UserPage extends Component {
             return false
         }
 
+        /* check age */
         if (age <= 0 || age > 150 || age === null) {
             this.setState(prevState => ({
                 errorMsgs: {
@@ -88,12 +104,12 @@ class UserPage extends Component {
             }))
             return false
         }
-
         return true
     }
     
     handleSubmit = (e) => {
         e.preventDefault();
+        console.log(this.state)
         const isValid = this.validate();
         if (isValid) {
             this.setState({
@@ -111,7 +127,7 @@ class UserPage extends Component {
     render() {
         return (
             <div>
-                <UserForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} errorMsgs={this.state.errorMsgs} validate={this.validate}/>
+                <UserForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} errorMsgs={this.state.errorMsgs} validate={this.validate} />
                 {this.state.isSubmitted && <CalorieResult dailyCalories={this.state.dailyCalories} />}
             </div>
         )
