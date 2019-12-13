@@ -1,14 +1,14 @@
 Prioridades do projeto
 
+
+ERRO ATUAL: me certificar de que a receita tá sendo salva no primeiro click e de que tá acumulando as receitas
+DEPOIS: fazer o diet searcher dizer quando passou do limite calórico
+
+
 1 - Form validation na aba "My Info" (todos as error messages deveriam aparecer simultaneamente quando o caso)
-2 - Diet Searcher com autocomplete (https://spoonacular.com/food-api/docs#Autocomplete-Ingredient-Search)
 3 - O Diet Searcher permite adicionar alimentos (localstorage) em quantas porções o usuário quiser e avisa quando passa do limite calórico
 4 - Copiar os textos do yazio.com e fazer umas tabs pra ter mais conteúdo abaixo do form
 5 - Deixar tudo bonito com Sass
 6 - Criar um modal de boas vindas. Se o usuário já preencheu o form, esse modal dá "Welcome, [nome do usuário]"
 7 - React transition group pra aplicar uma pequena transição entre as páginas
 
-----------------
-FASE 2
-
-O usuário pode pesquisar alimentos que terão seus valores nutricionais mostrados numa tabela interativa, onde podem ser excluídos, somados etc. Esses alimentos podem ter a quantidade da porção alterada e serem salvos. Uma conta simples vai informar ao usuário se a soma da lista está dentro do limite calórico.

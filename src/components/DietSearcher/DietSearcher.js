@@ -21,11 +21,10 @@ export class DietSearcher extends Component {
         axios.get(endpoint)
             .then(res => {
                 const food = res.data.results
-                this.setState({
+                this.setState(prevState => ({
                     food,
                     isFoodShown: true
-                })
-                console.log(this.state)
+                }))
             })
     }
 
@@ -39,33 +38,49 @@ export class DietSearcher extends Component {
                     amount: nutrient.amount
                    }
                 })
-                this.setState({
+                this.setState(prevState => ({
                     moreInfoRecipe: {
+                        ...prevState.moreInfoRecipe,
                         moreInfoResult: result,
-                        recipeid: recipeid,
+                        recipeid,
                         isMoreInfoShown: true
                     }
-                })
+                }))
+                console.log(this.state)
             })
     }
 
-    // saveRecipe = (e) => {
-    //     if (typeof(Storage) !== "undefined") {
-    //         localStorage.setItem('@calorie-police/userRecipes', JSON.stringify(this.state.savedRecipes));
-    //     }
-    // }
+    saveRecipe = () => {
+        const savedRecipes = this.state.food.filter(food => {
+            return food.id === this.state.moreInfoRecipe.recipeid
+        })
+        this.setState(prevState => ({
+                savedRecipes: {
+                ...prevState.savedRecipes,
+                savedRecipes
+        }}))
+        console.log(this.state)
+            
+        if (typeof(Storage) !== "undefined") {
+            localStorage.setItem('@calorie-police/userRecipes', JSON.stringify(this.state.savedRecipes));
+        }
+    }
 
     render() {
         return (
             <div>
                 <h1></h1>
-                <p>Search and add the recipe you want and we will tell you if it fits your daily caloric need</p>
+                <p>Search and add the recipe you want to your diet and we will tell you if it fits your daily caloric need</p>
                 <DietForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
-                { this.state.isFoodShown && <DietResults food={this.state.food} seeMoreInfo={this.seeMoreInfo} moreInfoRecipe={this.state.moreInfoRecipe} /> }
+                
+                { this.state.isFoodShown && 
+                <DietResults food={this.state.food}
+                seeMoreInfo={this.seeMoreInfo}
+                moreInfoRecipe={this.state.moreInfoRecipe}
+                saveRecipe={this.saveRecipe} /> }           
             </div>
         )
     }
 }
 
 export default DietSearcher
-

@@ -1,18 +1,20 @@
 import React from 'react'
 
-const MoreInfo = ({moreInfoResult}) => {
-    const infoList = moreInfoResult.map(nutrient => {
-        const nutrientKey = Math.random()*10
+const MoreInfo = ({moreInfoRecipe, saveRecipe}) => {
+    const infoList = moreInfoRecipe.moreInfoResult.map(nutrient => {
+        const randomKey = Math.random()*10
         return ( 
-            <div className="more-info-container" key={nutrientKey}>
+            <div className="more-info-container" key={randomKey}>
                 <p>{nutrient.title}: {nutrient.amount}</p>
             </div>
         )
+        
     })
 
     return (
         <>
             {infoList}
+            <button id="add-recipe-button" onClick={saveRecipe}>Add recipe</button>
         </>
     )
 }

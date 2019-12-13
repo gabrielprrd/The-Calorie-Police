@@ -109,7 +109,6 @@ class UserPage extends Component {
     
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
         const isValid = this.validate();
         if (isValid) {
             this.setState({
@@ -119,15 +118,18 @@ class UserPage extends Component {
             if (typeof(Storage) !== "undefined") {
                 localStorage.setItem('@calorie-police/userInfo', JSON.stringify(this.state));
             }
-            
-            console.log(this.state)
         }
     }
 
     render() {
         return (
             <div>
-                <UserForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} errorMsgs={this.state.errorMsgs} validate={this.validate} />
+                <UserForm
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+                errorMsgs={this.state.errorMsgs}
+                validate={this.validate} />
+                
                 {this.state.isSubmitted && <CalorieResult dailyCalories={this.state.dailyCalories} />}
             </div>
         )
