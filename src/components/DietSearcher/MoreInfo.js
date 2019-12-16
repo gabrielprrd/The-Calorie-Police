@@ -1,20 +1,25 @@
 import React from 'react'
+import { Container, Button } from '@material-ui/core'
+import { MoreInfoContainer } from '../../styles'
+
 
 const MoreInfo = ({moreInfoRecipe, saveRecipe}) => {
-    const infoList = moreInfoRecipe.moreInfoResult.map(nutrient => {
+    const infoList = moreInfoRecipe.moreInfoResult.map((nutrient, index) => {
         const randomKey = Math.random()*10
-        return ( 
-            <div className="more-info-container" key={randomKey}>
-                <p>{nutrient.title}: {nutrient.amount}</p>
-            </div>
-        )
+        while (index <= 5) {
+            return ( 
+                <MoreInfoContainer key={randomKey}>
+                    <p>{nutrient.title}: {nutrient.amount}</p>
+                </MoreInfoContainer>
+            )
+        }
         
     })
 
     return (
         <>
             {infoList}
-            <button id="add-recipe-button" onClick={saveRecipe}>Add recipe</button>
+            <Button variant="contained" color="secondary" onClick={saveRecipe}>Add recipe</Button>
         </>
     )
 }

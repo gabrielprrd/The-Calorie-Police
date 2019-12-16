@@ -4,7 +4,7 @@ export const INITIAL_USERINFO = {
     age: null,
     height: null,
     weight: null,
-    activity: 1.2,
+    activity: null,
     basalMetabolism: null,
     dailyCalories: null,
     isSubmitted: false,

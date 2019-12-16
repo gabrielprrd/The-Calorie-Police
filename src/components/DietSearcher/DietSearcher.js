@@ -51,16 +51,18 @@ export class DietSearcher extends Component {
     }
 
     saveRecipe = () => {
-        const savedRecipes = this.state.food.filter(food => {
-            return food.id === this.state.moreInfoRecipe.recipeid
+        const newRecipeToStore = this.state.food.filter(food => {
+            return (food.id === this.state.moreInfoRecipe.recipeid)        
         })
-        this.setState(prevState => ({
-                savedRecipes: {
-                ...prevState.savedRecipes,
-                savedRecipes
-        }}))
+
+        this.setState( prevState => ({
+            savedRecipes: {
+            ...prevState.savedRecipes,
+            newRecipeToStore
+            }
+        }) )
         console.log(this.state)
-            
+
         if (typeof(Storage) !== "undefined") {
             localStorage.setItem('@calorie-police/userRecipes', JSON.stringify(this.state.savedRecipes));
         }
@@ -69,8 +71,7 @@ export class DietSearcher extends Component {
     render() {
         return (
             <div>
-                <h1></h1>
-                <p>Search and add the recipe you want to your diet and we will tell you if it fits your daily caloric need</p>
+                <h3>Search and add the recipe you want to your diet and we will tell you if it fits your daily caloric need!</h3>
                 <DietForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
                 
                 { this.state.isFoodShown && 

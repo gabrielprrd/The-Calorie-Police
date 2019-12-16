@@ -1,48 +1,44 @@
 import React from 'react'
+import { InputLabel, FormControl, Select, MenuItem, FormControlLabel, FormLabel, RadioGroup, Radio, FormHelperText, Button, TextField } from '@material-ui/core'
 
-const UserForm = ({handleChange, handleSubmit, errorMsgs}) => {
+
+const UserForm = ({handleChange, handleSelect, handleNameChange, handleSubmit, errorMsgs, activity}) => {
 
         return (
             <form onSubmit={handleSubmit}>
 
-                <input type="text" id="name" placeholder="Your name" onChange={handleChange} />
-                <div className="errorDiv">{errorMsgs.nameError}</div>
+                <TextField type="text" id="name" placeholder="Your name" onChange={handleNameChange} />
+                <FormHelperText className="errorDiv">{errorMsgs.nameError}</FormHelperText>
 
-                <p>Your gender:</p>
-                <label>
-                <p>Man</p>
-                    <input type="radio" id="gender" value="male" onChange={handleChange} />
-                </label>
-                <label>
-                    <p>Woman</p>
-                    <input type="radio" id="gender" value="female" onChange={handleChange} />
-                </label>
+                <FormLabel>Gender: </FormLabel>
+                <RadioGroup aria-label="gender" id="gender"  onChange={handleSelect}>
+                    <FormControlLabel value="female" name="gender" control={<Radio color="secondary" />} label="Female" />
+                    <FormControlLabel value="male" name="gender" control={<Radio color="primary" />} label="Male" />
+                </RadioGroup>
                 <div className="errorGender">{errorMsgs.genderError}</div>
                 
-                <label htmlFor="height">Your height:</label>
-                <input type="number" id="height" onChange={handleChange} />
+                <TextField type="number" id="height" label="Your Height" onChange={handleChange} />
                 <div className="errorDiv">{errorMsgs.heightError}</div>
 
-        
-                <label htmlFor="weight">Your weight:</label>                    
-                <input type="number" id="weight" onChange={handleChange} />
+                          
+                <TextField type="number" id="weight" label="Your weight" onChange={handleChange} />
                 <div className="errorDiv">{errorMsgs.weightError}</div>
 
 
-                <label htmlFor="age">Your age:</label>
-                <input type="number" id="age" onChange={handleChange} />
+                <TextField type="Number" id="age" label="Your age" onChange={handleChange} />
                 <div className="errorDiv">{errorMsgs.ageError}</div>
 
+                <FormControl>
+                <InputLabel id="activity-label">Exercise level: </InputLabel>
+                <Select name="activity" id="activity" value={activity} onChange={handleSelect}>
+                    <MenuItem value={1.2}>Sedentary</MenuItem>
+                    <MenuItem value={1.375}>Light exercises (1-3 days/week)</MenuItem>
+                    <MenuItem value={1.550}>Moderate exercises (3-5 days/week)</MenuItem>
+                    <MenuItem value={1.725}>Heavy exercises (5-7 days/week)</MenuItem>
+                </Select>
+                </FormControl>
 
-                <label htmlFor="activity">Exercise level:</label>
-                <select id="activity" onChange={handleChange}>
-                    <option value={1.2}>Sedentary</option>
-                    <option value={1.375}>Light exercises (1-3 days/week)</option>
-                    <option value={1.550}>Moderate exercises (3-5 days/week)</option>
-                    <option value={1.725}>Heavy exercises (5-7 days/week)</option>
-                </select>
-
-                <button type="submit">Show daily calories</button>
+                <Button variant="contained" color="secondary" type="submit">Show daily calories</Button>
             </form>
         )
     }

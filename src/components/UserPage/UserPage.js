@@ -1,16 +1,31 @@
 import React, { Component } from 'react'
 import UserForm from './UserForm'
 import CalorieResult from './CalorieResult'
+import UserPageInfo from './UserPageInfo'
 import { INITIAL_USERINFO } from '../../store'
 
 class UserPage extends Component {
 
     state = INITIAL_USERINFO
 
-    handleChange = (e) => {
+    handleSelect = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleNameChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
         })
+    }
+
+
+    handleChange = (e) => {
+
+            this.setState({
+                [e.target.id]: parseInt(e.target.value)
+            })
 
         const { gender, weight, height, age, activity, basalMetabolism } = this.state;
 
@@ -54,7 +69,7 @@ class UserPage extends Component {
         if (nameError) {
             this.setState(prevState => ({ 
                 errorMsgs: {
-                    ...prevState,
+                    // ...prevState.errorMsgs,
                     nameError
             }
         }))
@@ -65,7 +80,7 @@ class UserPage extends Component {
         if (gender === null) {
             this.setState(prevState => ({
                 errorMsgs: {
-                    ...prevState,
+                    // ...prevState.errorMsgs,
                     genderError
                 }
             }))
@@ -76,7 +91,7 @@ class UserPage extends Component {
         if (height <= 0 || height === null) {
             this.setState(prevState => ({
                 errorMsgs: {
-                    ...prevState,
+                    // ...prevState.errorMsgs,
                     heightError
                 }
             }))
@@ -87,7 +102,7 @@ class UserPage extends Component {
         if (weight <= 0 || weight === null) {
             this.setState(prevState => ({
                 errorMsgs: {
-                    ...prevState,
+                    // ...prevState.errorMsgs,
                     weightError
                 }
             }))
@@ -98,7 +113,7 @@ class UserPage extends Component {
         if (age <= 0 || age > 150 || age === null) {
             this.setState(prevState => ({
                 errorMsgs: {
-                    ...prevState,
+                    // ...prevState.errorMsgs,
                     ageError
                 }
             }))
@@ -109,6 +124,7 @@ class UserPage extends Component {
     
     handleSubmit = (e) => {
         e.preventDefault();
+        console.log(this.state)
         const isValid = this.validate();
         if (isValid) {
             this.setState({
@@ -124,13 +140,24 @@ class UserPage extends Component {
     render() {
         return (
             <div>
+                <div>
+                    <p>
+                    With the calorie intake calculator from The Calorie Police, we’ll help you calculate and understand your daily calorie intake needs. Our calorie needs calculator is highly personalized, so it can yield calorie intake for both men and women. Simply input the requested information, and we’ll display the healthiest range for your recommended calorie intake whether you’re looking to gain, lose or maintain your current weight. Try it today, it doesn’t get any easier than this
+                    </p>
+                </div>
+
                 <UserForm
+                // activity={this.state.activity}
+                handleNameChange={this.handleNameChange}
+                handleSelect={this.handleSelect}
                 handleSubmit={this.handleSubmit}
                 handleChange={this.handleChange}
                 errorMsgs={this.state.errorMsgs}
                 validate={this.validate} />
                 
                 {this.state.isSubmitted && <CalorieResult dailyCalories={this.state.dailyCalories} />}
+
+                <UserPageInfo />
             </div>
         )
     }

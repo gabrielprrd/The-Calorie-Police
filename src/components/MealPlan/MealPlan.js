@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { INITIAL_MEAL_PLAN, apiKey } from '../../store'
 import MealPlanResults from './MealPlanResults'
+import { Grid, Button } from '@material-ui/core'
+
 
 export class MealPlan extends Component {
 
@@ -27,13 +29,17 @@ export class MealPlan extends Component {
     render() {
 
         return (
-            <div>
-                <h1>We suggest daily meal plans for your caloric needs!</h1>
-                <button onClick={this.showMeals} type="submit">Show me!</button>
+            <Grid container
+            direction="column"
+            justify="center"
+            alignItems="center"
+          >
+                <h2>We suggest daily meal plans for your caloric needs!</h2>
+                <Button onClick={this.showMeals} type="submit" variant="contained" color="secondary">Show me!</Button>
                 
                 {/* Displays meal plans */}
                 { this.state.isMealShown && <MealPlanResults meals={this.state.food.meals} nutrients={this.state.food.nutrients} /> } 
-            </div>
+            </Grid>
         )
     }
 }

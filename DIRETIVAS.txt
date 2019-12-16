@@ -1,7 +1,13 @@
 Prioridades do projeto
 
 
-ERRO ATUAL: me certificar de que a receita tá sendo salva no primeiro click e de que tá acumulando as receitas
+ERROS:
+- me certificar de que a receita tá sendo salva no primeiro click e de que tá acumulando as receitas
+- o input name não aceita nomes sem espaço (???)
+- erros com o exercise level input
+- Footer não funciona corretamente com margin top
+- MoreInfo container não deixa as informações dentro dele
+
 DEPOIS: fazer o diet searcher dizer quando passou do limite calórico
 
 
