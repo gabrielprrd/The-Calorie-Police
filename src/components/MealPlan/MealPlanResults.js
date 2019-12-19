@@ -1,8 +1,6 @@
 import React from 'react'
 import { MealResultContainer, GeneralMealsInfoContainer } from '../../styles'
 
-
-
 const MealPlanResults = ({meals, nutrients}) => {
     const { calories, carbohydrates, fat, protein } = nutrients;
     const mealsList = meals.map(meal => {

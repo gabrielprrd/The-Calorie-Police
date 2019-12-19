@@ -3,6 +3,8 @@ import UserForm from './UserForm'
 import CalorieResult from './CalorieResult'
 import UserPageInfo from './UserPageInfo'
 import { INITIAL_USERINFO } from '../../store'
+import { HomeImgContainer } from '../../styles'
+import sprinting from '../../img/sprinting.jpg'
 
 class UserPage extends Component {
 
@@ -137,28 +139,36 @@ class UserPage extends Component {
         }
     }
 
+    showTabInfo = (e) => {
+
+    }
+
     render() {
         return (
-            <div>
-                <div>
+            <>
+                <HomeImgContainer>
+                    <img src={sprinting} alt="Woman running" />
+                    <div className="img-content">
                     <p>
                     With the calorie intake calculator from The Calorie Police, we’ll help you calculate and understand your daily calorie intake needs. Our calorie needs calculator is highly personalized, so it can yield calorie intake for both men and women. Simply input the requested information, and we’ll display the healthiest range for your recommended calorie intake whether you’re looking to gain, lose or maintain your current weight. Try it today, it doesn’t get any easier than this
                     </p>
-                </div>
+                    </div>
+                </HomeImgContainer>
 
                 <UserForm
-                // activity={this.state.activity}
                 handleNameChange={this.handleNameChange}
                 handleSelect={this.handleSelect}
                 handleSubmit={this.handleSubmit}
                 handleChange={this.handleChange}
                 errorMsgs={this.state.errorMsgs}
-                validate={this.validate} />
+                showTabInfo={this.showTabInfo}
+                validate={this.validate} 
+                activity={this.state.activity} />
                 
                 {this.state.isSubmitted && <CalorieResult dailyCalories={this.state.dailyCalories} />}
 
                 <UserPageInfo />
-            </div>
+            </>
         )
     }
 }

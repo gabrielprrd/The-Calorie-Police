@@ -1,20 +1,18 @@
 Prioridades do projeto
 
+1) UserPage {
+    - Erro: todas as error messages deveriam aparecer simultaneamente quando o caso
+    - Erro: o input name não aceita nomes sem espaço (???)
+    - Formatar os textos abaixo do formulário em tabs (acho que vou precisar de um booleano no state que deixa display: block somente no clicado)
+    - Colocar umas imagens pra deixar mais bonito
+    - Colocar ícones na NavBar
+    - Colocar sufixos (kg, m) no formulário
+}
 
-ERROS:
-- me certificar de que a receita tá sendo salva no primeiro click e de que tá acumulando as receitas
-- o input name não aceita nomes sem espaço (???)
-- erros com o exercise level input
-- Footer não funciona corretamente com margin top
-- MoreInfo container não deixa as informações dentro dele
+2) Diet Searcher {
+    - Erro: MoreInfo container não deixa as informações dentro dele
+    - Erro: me certificar de que a receita no DietSearcher tá sendo salva no primeiro click e de que tá acumulando as receitas
+    - Avisar ao usuário se as receitas passaram do limite calórico diário
+}
 
-DEPOIS: fazer o diet searcher dizer quando passou do limite calórico
-
-
-1 - Form validation na aba "My Info" (todos as error messages deveriam aparecer simultaneamente quando o caso)
-3 - O Diet Searcher permite adicionar alimentos (localstorage) em quantas porções o usuário quiser e avisa quando passa do limite calórico
-4 - Copiar os textos do yazio.com e fazer umas tabs pra ter mais conteúdo abaixo do form
-5 - Deixar tudo bonito com Sass
-6 - Criar um modal de boas vindas. Se o usuário já preencheu o form, esse modal dá "Welcome, [nome do usuário]"
-7 - React transition group pra aplicar uma pequena transição entre as páginas
-
+3) Criar um modal de boas vindas. Se o usuário já preencheu o form, esse modal dá "Welcome, [nome do usuário]" (ou eliminar o name e essa ideia)

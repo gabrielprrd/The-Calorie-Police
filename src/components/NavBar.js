@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography, Button, Grid } from '@material-ui/core'
 
 const NavBar = () => {
     return (
-            <AppBar position="relative">
+            <AppBar position="static">
                 <Toolbar>
                     <Grid container justify="space-between">
                         <Typography variant="h5" color="inherit">
