@@ -20,7 +20,7 @@ export const INITIAL_USERINFO = {
 export const INITIAL_FOODLIST = {
     query: '',
     food: null,
-    savedRecipes: null,
+    savedRecipes: [],
     isFoodShown: false,
     moreInfoRecipe: {
         moreInfoResult: null,

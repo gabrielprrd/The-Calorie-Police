@@ -5,6 +5,7 @@ import UserPageInfo from './UserPageInfo'
 import { INITIAL_USERINFO } from '../../store'
 import { HomeImgContainer } from '../../styles'
 import sprinting from '../../img/sprinting.jpg'
+import runningVertical from '../../img/running-vertical.jpg'
 
 class UserPage extends Component {
 
@@ -147,11 +148,12 @@ class UserPage extends Component {
         return (
             <>
                 <HomeImgContainer>
-                    <img src={sprinting} alt="Woman running" />
+                    <img src={sprinting} className="sprintingImg" alt="Woman running" />
+                    <img src={runningVertical} className="runningVerticalImg" alt="Woman running" />
                     <div className="img-content">
-                    <p>
-                    With the calorie intake calculator from The Calorie Police, we’ll help you calculate and understand your daily calorie intake needs. Our calorie needs calculator is highly personalized, so it can yield calorie intake for both men and women. Simply input the requested information, and we’ll display the healthiest range for your recommended calorie intake whether you’re looking to gain, lose or maintain your current weight. Try it today, it doesn’t get any easier than this
-                    </p>
+                        <p>
+                        With the calorie intake calculator from The Calorie Police, we’ll help you calculate and understand your daily calorie intake needs. Our calorie needs calculator is highly personalized, so it can yield calorie intake for both men and women. Simply input the requested information, and we’ll display the healthiest range for your recommended calorie intake whether you’re looking to gain, lose or maintain your current weight. Try it today, it doesn’t get any easier than this.
+                        </p>
                     </div>
                 </HomeImgContainer>
 

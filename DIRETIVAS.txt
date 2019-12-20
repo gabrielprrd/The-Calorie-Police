@@ -6,12 +6,9 @@ Prioridades do projeto
     - Formatar os textos abaixo do formulário em tabs (acho que vou precisar de um booleano no state que deixa display: block somente no clicado)
     - Colocar umas imagens pra deixar mais bonito
     - Colocar ícones na NavBar
-    - Colocar sufixos (kg, m) no formulário
 }
 
 2) Diet Searcher {
-    - Erro: MoreInfo container não deixa as informações dentro dele
-    - Erro: me certificar de que a receita no DietSearcher tá sendo salva no primeiro click e de que tá acumulando as receitas
     - Avisar ao usuário se as receitas passaram do limite calórico diário
 }
 

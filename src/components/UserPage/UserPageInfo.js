@@ -20,7 +20,7 @@ const UserPageInfo = ({showTabInfo}) => {
                     <Typography variant="h5">How our Calorie Intake Calculator works</Typography>
 
                     So, how exactly does our calculator find your daily calorie needs? Your recommended calorie intake depends on several different factors, including gender, age and daily activity. Our caloric needs calculator takes all of these variables into account. Gender, for example, plays an essential role in daily calorie intake calculation. Men generally have a higher muscle percentage than women. Since muscle burns calories faster than fat, the calorie requirements for men will be naturally higher than the calorie intake needs for women. Age also plays an essential role. As our bodies age, they burn fewer and fewer calories per day. That means, as an individual ages and their metabolism slows, their daily caloric needs decrease as well. This is an essential factor, especially if someone fails to reduce their calorie intake from year to year. Weight gain is generally the result. Lastly, but most certainly not least, is the factor of lifestyle and activity. Those with a physically active lifestyle will burn more calories during the day and will have higher calorie requirements. Furthermore, individuals participating in sports, and building more muscles as a result, will have a higher recommended calorie intake.
-                </InfoTabsInnerDiv>>
+                </InfoTabsInnerDiv>
 
                 <InfoTabsInnerDiv>
                     <Typography variant="h5">Daily calorie needs based on current weight</Typography>

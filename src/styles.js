@@ -1,42 +1,13 @@
 import styled from 'styled-components';
 
-// export const GlobalStyle = createGlobalStyle`
-    
-    /* *, *::after, *::before {
-        box-sizing: border-box;
-    }
-    
-    html {    
-        font-size: calc(0.8em + 1vw);
-        font-family: 'Roboto', sans-serif;
-        min-height: 100vh;
-        min-width: 100vw;
-        position: relative;
-
-        h1 {
-            font-size: 2em;
-        }
-        
-        h2 {
-            font-size: 1.5em;
-        }
-
-        img {
-            max-width: 100%;
-            object-fit: contain;
-        }
-    }
-`; */
-
 export const AppContainer = styled.div`
     min-height: 100vh;
-    position: relative;
     padding: 0 1em;
 `
 
 // User Page
 export const ErrorMsg = styled.div`
-    font-size: 0.7em;
+    font-size: 0.85em;
     color: red;
 `;
 
@@ -55,7 +26,7 @@ export const HomeImgContainer = styled.div`
         background: rgba(0, 0, 0, 0.6);
         z-index: 2;
         color: white;
-        padding: 1em;
+        padding: 0.5em;
 
         p {
             bottom: 0px;
@@ -69,6 +40,26 @@ export const HomeImgContainer = styled.div`
         z-index: 1;
         bottom: 0;
         left: 0;
+    }
+
+    .runningVerticalImg {
+        display: none;
+    }
+
+    @media screen and (max-width: 600px) {
+        .runningVerticalImg {
+            display: block;
+        }
+
+        .sprintingImg {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 300px) {
+        p {
+            font-size: 0.8em;
+        }
     }
 `
 
@@ -129,7 +120,7 @@ export const TabButtonsContainer = styled.div`
     display: flex;
 
     button {
-        margin: 0.8em;
+        margin: 0.3em 0.8em;
         font-size: 0.9em;
     }
 
@@ -140,7 +131,7 @@ export const TabButtonsContainer = styled.div`
 `
 
 export const InfoTabsDiv = styled.div`
-
+    padding: 1em;
 `
 
 export const InfoTabsInnerDiv = styled.div`
@@ -149,15 +140,17 @@ export const InfoTabsInnerDiv = styled.div`
 
 // Footer
 export const Bottom = styled.footer`
-    position: absolute;
-    text-align: center;
-    padding: 0.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    height: 80px;
     background-color: #304ffe;
-    bottom: 0px;
-    width: 100%;
+    bottom: 0;
     
     p {
         font-size: 0.8em;
+
     }
     
     a {

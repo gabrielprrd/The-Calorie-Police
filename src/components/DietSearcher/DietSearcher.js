@@ -3,6 +3,7 @@ import { INITIAL_FOODLIST, apiKey } from '../../store'
 import axios from 'axios'
 import DietForm from './DietForm'
 import DietResults from './DietResults'
+import UserRecipes from './UserRecipes'
 
 export class DietSearcher extends Component {
 
@@ -51,22 +52,21 @@ export class DietSearcher extends Component {
     }
 
     saveRecipe = () => {
-        const newRecipeToStore = this.state.food.filter(food => {
+        const newRecipe = this.state.food.filter(food => {
             return (food.id === this.state.moreInfoRecipe.recipeid)        
         })
-
-        this.setState( prevState => ({
-            savedRecipes: {
-            ...prevState.savedRecipes,
-            newRecipeToStore
-            }
-        }) )
-        console.log(this.state)
+        let recipesArray = [...this.state.savedRecipes, ...newRecipe]
+        
+        this.setState({
+            savedRecipes: recipesArray
+        },
+            () => { console.log(this.state) }
+        )
 
         if (typeof(Storage) !== "undefined") {
             localStorage.setItem('@calorie-police/userRecipes', JSON.stringify(this.state.savedRecipes));
         }
-    }
+    };
 
     render() {
         return (
@@ -78,7 +78,9 @@ export class DietSearcher extends Component {
                 <DietResults food={this.state.food}
                 seeMoreInfo={this.seeMoreInfo}
                 moreInfoRecipe={this.state.moreInfoRecipe}
-                saveRecipe={this.saveRecipe} /> }           
+                saveRecipe={this.saveRecipe} /> }  
+
+                <UserRecipes savedRecipes={this.state.savedRecipes} />         
             </div>
         )
     }
