@@ -53,18 +53,30 @@ export class DietSearcher extends Component {
 
     saveRecipe = () => {
         const newRecipe = this.state.food.filter(food => {
-            return (food.id === this.state.moreInfoRecipe.recipeid)        
+            return (food.id === this.state.moreInfoRecipe.recipeid)  
         })
-        let recipesArray = [...this.state.savedRecipes, ...newRecipe]
+        const newRecipeFullInfo = { ...newRecipe, savedRecipeInfo: this.state.moreInfoRecipe.moreInfoResult}
+        let savedRecipes = [...this.state.savedRecipes, newRecipeFullInfo];
+
+        const userRecipesTotalCaloriesArray = savedRecipes.map(recipe => {
+            return recipe.savedRecipeInfo[0].amount
+        })
+
+        const userRecipesTotalCalories = userRecipesTotalCaloriesArray.reduce((prevValue, value) => {
+            return prevValue + value
+        })
         
         this.setState({
-            savedRecipes: recipesArray
+            savedRecipes: savedRecipes,
+            isSavedRecipeShown: true,
+            userRecipesTotalCalories
         },
             () => { console.log(this.state) }
         )
 
         if (typeof(Storage) !== "undefined") {
-            localStorage.setItem('@calorie-police/userRecipes', JSON.stringify(this.state.savedRecipes));
+            localStorage.setItem('@calorie-police/savedRecipes', JSON.stringify(this.state.savedRecipes));
+            localStorage.setItem('@calorie-police/userRecipesTotalCalories', JSON.stringify(this.state.userRecipesTotalCalories));
         }
     };
 
@@ -80,7 +92,8 @@ export class DietSearcher extends Component {
                 moreInfoRecipe={this.state.moreInfoRecipe}
                 saveRecipe={this.saveRecipe} /> }  
 
-                <UserRecipes savedRecipes={this.state.savedRecipes} />         
+                <UserRecipes savedRecipes={this.state.savedRecipes} isSavedRecipeShown={this.state.isSavedRecipeShown}
+                userRecipesTotalCalories={this.state.userRecipesTotalCalories} />         
             </div>
         )
     }

@@ -21,6 +21,8 @@ export const INITIAL_FOODLIST = {
     query: '',
     food: null,
     savedRecipes: [],
+    userRecipesTotalCalories: 0,
+    isSavedRecipeShown: false,
     isFoodShown: false,
     moreInfoRecipe: {
         moreInfoResult: null,

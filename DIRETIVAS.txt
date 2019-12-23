@@ -13,3 +13,7 @@ Prioridades do projeto
 }
 
 3) Criar um modal de boas vindas. Se o usuário já preencheu o form, esse modal dá "Welcome, [nome do usuário]" (ou eliminar o name e essa ideia)
+
+4) Footer {
+    - Fixá-lo e colocar na cor do 
+}
