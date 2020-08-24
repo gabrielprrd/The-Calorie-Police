@@ -1,19 +1,6 @@
-Prioridades do projeto
+Diretivas do projeto:
 
-1) UserPage {
-    - Erro: todas as error messages deveriam aparecer simultaneamente quando o caso
-    - Erro: o input name não aceita nomes sem espaço (???)
-    - Formatar os textos abaixo do formulário em tabs (acho que vou precisar de um booleano no state que deixa display: block somente no clicado)
-    - Colocar umas imagens pra deixar mais bonito
-    - Colocar ícones na NavBar
-}
-
-2) Diet Searcher {
-    - Avisar ao usuário se as receitas passaram do limite calórico diário
-}
-
-3) Criar um modal de boas vindas. Se o usuário já preencheu o form, esse modal dá "Welcome, [nome do usuário]" (ou eliminar o name e essa ideia)
-
-4) Footer {
-    - Fixá-lo e colocar na cor do 
-}
+- Tornar todos os componentes funcionais com Hooks.
+- Estilizar cada componente pensando em todas as responsividades
+- Utilizar o Materia-UI só pros forms e talvez pra agilizar caroussel
+- Criar um backend bem simples para somente dar um fetch (esconder apiKey)

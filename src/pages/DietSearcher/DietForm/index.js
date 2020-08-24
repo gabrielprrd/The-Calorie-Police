@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, TextField } from '@material-ui/core';
-import { FormDiet } from '../../styles';
+import { FormDiet } from '../../../styles';
 
 const DietForm = ({ handleChange, handleSubmit }) => {
   return (

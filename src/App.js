@@ -1,32 +1,43 @@
 import React from 'react';
 
+// Theming
+import { ThemeProvider } from 'styled-components';
+import mainTheme from './assets/globalStyles/theme';
+
 // Styles
 import 'typeface-roboto';
 import { CssBaseline } from '@material-ui/core';
+import GlobalStyle from './assets/GlobalStyles/globalStyles';
 import { AppContainer } from './styles';
 
 // Components & Routing
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import NavBar from './components/NavBar';
-import UserPage from './components/UserPage/UserPage';
-import DietSearcher from './components/DietSearcher/DietSearcher';
-import MealPlan from './components/MealPlan/MealPlan';
-import Footer from './components/Footer';
+// Components
+import NavBar from './components/NavBar/index';
+import Footer from './components/Footer/index';
+
+// Pages
+import UserPage from './pages/UserPage/index';
+import DietSearcher from './pages/DietSearcher/index';
+import MealPlan from './pages/MealPlan/index';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <CssBaseline />
-        <NavBar />
-        <AppContainer>
-          <Route exact path="/" component={UserPage} />
-          <Route path="/food" component={DietSearcher} />
-          <Route path="/meal-plan" component={MealPlan} />
-          <Footer />
-        </AppContainer>
-      </div>
-    </BrowserRouter>
+    <ThemeProvider theme={mainTheme}>
+      <BrowserRouter>
+        <div className="App">
+          <GlobalStyle />
+          <CssBaseline />
+          <NavBar />
+          <AppContainer>
+            <Route exact path="/" component={UserPage} />
+            <Route path="/food" component={DietSearcher} />
+            <Route path="/meal-plan" component={MealPlan} />
+            <Footer />
+          </AppContainer>
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

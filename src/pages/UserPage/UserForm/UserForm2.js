@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
-// import { INITIAL_USERINFO } from '../store'
+import { INITIAL_USERINFO } from '../store';
 
 export default function UserForm() {
-  const [userInfo, setUserInfo] = useState({
-    name: null,
-    gender: null,
-    age: null,
-    height: null,
-    weight: null,
-    activity: 1.2,
-    basalMetabolism: null,
-    dailyCalories: null,
-  });
+  const [userInfo, setUserInfo] = useState(INITIAL_USERINFO);
 
   function handleChange(e) {
     e.persist();
