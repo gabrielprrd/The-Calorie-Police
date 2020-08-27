@@ -1,6 +1,7 @@
 Diretivas do projeto:
 
 - Tornar todos os componentes funcionais com Hooks.
+- Usar Formik ou UnForm pro UserForm na página principal
 - Estilizar cada componente pensando em todas as responsividades
-- Utilizar o Materia-UI só pros forms e talvez pra agilizar caroussel
-- Criar um backend bem simples para somente dar um fetch (esconder apiKey)
+- Utilizar o Materia-UI talvez só pros forms e talvez pra agilizar caroussel
+- Criar um backend bem simples para dar um fetch (esconder apiKey)

@@ -1,20 +1,12 @@
 export const INITIAL_USERINFO = {
   name: '',
-  gender: null,
-  age: null,
-  height: null,
-  weight: null,
+  gender: 'Male',
+  age: '',
+  height: '',
+  weight: '',
   activity: 1.2,
-  basalMetabolism: null,
-  dailyCalories: null,
-  isSubmitted: false,
-  errorMsgs: {
-    nameError: '',
-    genderError: '',
-    heightError: '',
-    weightError: '',
-    ageError: '',
-  },
+  basalMetabolism: '',
+  dailyCalories: '',
 };
 
 export const INITIAL_FOODLIST = {

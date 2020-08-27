@@ -1,143 +1,120 @@
-import React from 'react';
-import {
-  InputLabel,
-  Select,
-  MenuItem,
-  FormControlLabel,
-  FormLabel,
-  RadioGroup,
-  Radio,
-  FormHelperText,
-  Button,
-  TextField,
-  InputAdornment,
-} from '@material-ui/core';
-import { ErrorMsg, FormGroup } from '../../styles';
+import React, { useState } from 'react';
+import * as S from './styles';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as yup from 'yup';
 
-const UserForm = ({
-  handleChange,
-  handleSelect,
-  handleNameChange,
-  handleSubmit,
-  errorMsgs,
-  activity,
-}) => {
+import { INITIAL_USERINFO } from '../../../store/index';
+
+export default function UserForm() {
+  const [userInfo, setUserInfo] = useState();
+  let userSchema = yup.object().shape({
+    name: yup.string().required('Name is required.'),
+    gender: yup.string().required('Please select a gender.'),
+    age: yup.number().required('Age is required.').positive().integer(),
+    weight: yup.number().required('Weight is required.').positive(),
+    height: yup.number().required('Height is required').positive(),
+    activity: yup.string().required(),
+  });
+
+  const handleSubmit = (values) => {
+    const {
+      name,
+      gender,
+      weight,
+      height,
+      age,
+      activity,
+      basalMetabolism,
+    } = values;
+
+    let updatedBasalMetabolism;
+    if (gender === 'Male') {
+      updatedBasalMetabolism = (
+        66.5 +
+        13.8 * weight +
+        5 * height -
+        6.8 * age
+      ).toFixed(2);
+    } else if (gender === 'Female') {
+      updatedBasalMetabolism = (
+        655.1 +
+        13.8 * weight +
+        1.8 * height -
+        4.7 * age
+      ).toFixed(2);
+    }
+
+    let parsedActivity = parseFloat(activity);
+    setUserInfo({
+      name,
+      gender,
+      weight,
+      height,
+      age,
+      activity: parsedActivity,
+      basalMetabolism: updatedBasalMetabolism,
+      dailyCalories: (parsedActivity * updatedBasalMetabolism).toFixed(2),
+    });
+    console.log(userInfo);
+  };
+
   return (
-    <FormGroup onSubmit={handleSubmit}>
-      <div className="outterWrapper">
-        <div className="innerWrapper">
-          <div className="inputWrapper">
-            <TextField
-              required
-              type="text"
-              id="name"
-              label="Your name"
-              onChange={handleNameChange}
-            />
-            <ErrorMsg>{errorMsgs.nameError}</ErrorMsg>
-          </div>
+    <>
+      <Formik
+        initialValues={INITIAL_USERINFO}
+        validationSchema={userSchema}
+        onSubmit={handleSubmit}
+        validator={() => ({})}
+      >
+        <Form>
+          <S.InputDiv>
+            <label htmlFor="name">Your name: </label>
+            <Field type="text" name="name" />
+            <ErrorMessage name="name" component="div" />
+          </S.InputDiv>
 
-          <div className="inputWrapper">
-            <FormLabel>Gender: </FormLabel>
-            <RadioGroup
-              required
-              aria-label="gender"
-              id="gender"
-              onChange={handleSelect}
-            >
-              <FormControlLabel
-                value="female"
-                name="gender"
-                control={<Radio color="secondary" />}
-                label="Female"
-              />
-              <FormControlLabel
-                value="male"
-                name="gender"
-                control={<Radio color="primary" />}
-                label="Male"
-              />
-            </RadioGroup>
-            <ErrorMsg>{errorMsgs.genderError}</ErrorMsg>
-          </div>
-        </div>
+          <S.InputDiv>
+            <label htmlFor="gender">Your gender: </label>
+            <Field as="select" name="gender">
+              <option name="Male">Male</option>
+              <option name="Female">Female</option>
+            </Field>
+          </S.InputDiv>
 
-        <div className="innerWrapper">
-          <div className="inputWrapper">
-            <TextField
-              required
-              type="number"
-              id="height"
-              label="Your height"
-              onChange={handleChange}
-              InputProps={{
-                endAdornment: <InputAdornment position="end">m</InputAdornment>,
-              }}
-            />
-            <ErrorMsg>{errorMsgs.heightError}</ErrorMsg>
-          </div>
+          <S.InputDiv>
+            <label htmlFor="age">Your age: </label>
+            <Field type="number" min="1" name="age" />
+            <ErrorMessage name="age" component="div" />
+          </S.InputDiv>
 
-          <div className="inputWrapper">
-            <TextField
-              required
-              type="number"
-              id="weight"
-              label="Your weight"
-              onChange={handleChange}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">kg</InputAdornment>
-                ),
-              }}
-            />
-            <ErrorMsg>{errorMsgs.weightError}</ErrorMsg>
-          </div>
-        </div>
+          <S.InputDiv>
+            <label htmlFor="height">Your height: </label>
+            <Field type="number" min="1" name="height" />
+            <ErrorMessage name="height" component="div" />
+          </S.InputDiv>
 
-        <div className="innerWrapper">
-          <div className="inputWrapper">
-            <TextField
-              required
-              type="Number"
-              id="age"
-              label="Your age"
-              onChange={handleChange}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">years</InputAdornment>
-                ),
-              }}
-            />
-            <ErrorMsg>{errorMsgs.ageError}</ErrorMsg>
-          </div>
+          <S.InputDiv>
+            <label htmlFor="weight">Your weight: </label>
+            <Field type="number" min="1" name="weight" />
+            <ErrorMessage name="weight" component="div" />
+          </S.InputDiv>
 
-          <div className="inputWrapper">
-            <InputLabel id="activity">Exercise level: </InputLabel>
-            <Select
-              required
-              name="activity"
-              id="activity"
-              value={activity}
-              onChange={handleSelect}
-            >
-              <MenuItem value={1.2}>Sedentary</MenuItem>
-              <MenuItem value={1.375}>Light exercises (1-3 days/week)</MenuItem>
-              <MenuItem value={1.55}>
-                Moderate exercises (3-5 days/week)
-              </MenuItem>
-              <MenuItem value={1.725}>Heavy exercises (5-7 days/week)</MenuItem>
-            </Select>
-          </div>
-        </div>
-      </div>
+          <S.InputDiv>
+            <label htmlFor="activity">Exercise level: </label>
+            <Field component="select" name="activity">
+              <option value={1.2}>Sedentary</option>
+              <option value={1.375}>Light exercises (1-3 days/week)</option>
+              <option value={1.55}>Moderate exercises (3-5 days/week)</option>
+              <option value={1.725}>Heavy exercises (5-7 days/week)</option>
+            </Field>
+            <ErrorMessage name="activity" component="div" />
+          </S.InputDiv>
 
-      <div className="outterWrapper">
-        <Button variant="contained" color="secondary" type="submit">
-          Show daily calories
-        </Button>
-      </div>
-    </FormGroup>
+          <S.InputDiv>
+            <button type="submit">Submit</button>
+          </S.InputDiv>
+        </Form>
+      </Formik>
+    </>
   );
-};
-
-export default UserForm;
+}
