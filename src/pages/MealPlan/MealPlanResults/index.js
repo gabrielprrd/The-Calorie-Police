@@ -1,11 +1,10 @@
 import React from 'react';
-import { MealResultContainer, GeneralMealsInfoContainer } from '../../styles';
 
 const MealPlanResults = ({ meals, nutrients }) => {
   const { calories, carbohydrates, fat, protein } = nutrients;
   const mealsList = meals.map((meal) => {
     return (
-      <MealResultContainer key={meal.id}>
+      <div key={meal.id}>
         <img
           src={`https://spoonacular.com/recipeImages/${meal.id}-480x360.jpg`}
           alt={meal.title}
@@ -15,19 +14,19 @@ const MealPlanResults = ({ meals, nutrients }) => {
           <p>{meal.servings} servings</p>
           <p>Ready in {meal.readyInMinutes} minutes</p>
         </div>
-      </MealResultContainer>
+      </div>
     );
   });
 
   return (
     <>
-      <GeneralMealsInfoContainer>
+      <div>
         <h3>General information</h3>
         <p>Calories: {calories}</p>
         <p>Carbohydrates: {carbohydrates}</p>
         <p>Fat: {fat}</p>
         <p>Protein: {protein}</p>
-      </GeneralMealsInfoContainer>
+      </div>
       {mealsList}
     </>
   );

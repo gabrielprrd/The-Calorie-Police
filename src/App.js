@@ -18,7 +18,7 @@ import Footer from './components/Footer/index';
 // Pages
 import UserPage from './pages/UserPage/index';
 // import DietSearcher from './pages/DietSearcher/index';
-// import MealPlan from './pages/MealPlan/index';
+import MealPlan from './pages/MealPlan/index';
 
 export default function App() {
   return (
@@ -27,8 +27,8 @@ export default function App() {
         <GlobalStyles />
         {/* <NavBar /> */}
         <Route exact path="/" component={UserPage} />
-        {/* <Route path="/food" component={DietSearcher} />
-          <Route path="/meal-plan" component={MealPlan} /> */}
+        {/* <Route path="/food" component={DietSearcher} /> */}
+        <Route path="/meal-plan" component={MealPlan} />
         <Footer />
       </BrowserRouter>
     </ThemeProvider>

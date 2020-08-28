@@ -22,10 +22,3 @@ export const INITIAL_FOODLIST = {
     isMoreInfoShown: false,
   },
 };
-
-export const INITIAL_MEAL_PLAN = {
-  food: null,
-  isMealShown: false,
-};
-
-export const apiKey = '37d5be3315dc4a78acc31544ec2f7a84';
