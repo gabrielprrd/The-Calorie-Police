@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './styles';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
@@ -17,15 +17,7 @@ export default function UserForm() {
   });
 
   const handleSubmit = (values) => {
-    const {
-      name,
-      gender,
-      weight,
-      height,
-      age,
-      activity,
-      basalMetabolism,
-    } = values;
+    const { name, gender, weight, height, age, activity } = values;
 
     let updatedBasalMetabolism;
     if (gender === 'Male') {
@@ -55,7 +47,8 @@ export default function UserForm() {
       basalMetabolism: updatedBasalMetabolism,
       dailyCalories: (parsedActivity * updatedBasalMetabolism).toFixed(2),
     });
-    console.log(userInfo);
+
+    localStorage.setItem('@calorie-police/userInfo', JSON.stringify(userInfo));
   };
 
   return (

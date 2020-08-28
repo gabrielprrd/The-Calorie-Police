@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './styles';
 
 // Components
 import UserForm from './UserForm/index';
-// import CalorieResult from './CalorieResult/index';
+import CalorieResult from './CalorieResult/index';
 import UserPageInfo from './UserPageInfo/index';
 
 export default function UserPage() {
+  const [componentShouldShow, setComponentShouldShow] = useState(false);
+  const [dailyCalories, setDailyCalories] = useState();
+
+  useEffect(() => {
+    if (typeof Storage !== 'undefined') {
+      const fetchCalories = async () => {
+        try {
+          const fetchedDailyCalories = await JSON.parse(
+            localStorage.getItem('@calorie-police/userInfo')
+          ).dailyCalories;
+          setDailyCalories(fetchedDailyCalories);
+          setComponentShouldShow(true);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchCalories();
+    }
+  }, [dailyCalories]);
+
   return (
     <>
       <p>
@@ -20,7 +40,7 @@ export default function UserPage() {
       </p>
 
       <UserForm />
-      {/* <CalorieResult /> */}
+      {componentShouldShow && <CalorieResult dailyCalories={dailyCalories} />}
       <UserPageInfo />
     </>
   );
