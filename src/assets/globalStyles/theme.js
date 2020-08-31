@@ -1,11 +1,10 @@
 const mainTheme = {
-  primary: 'hsl(322, 100%, 66%)',
-  secondary: 'hsl(265, 100%, 66%)',
-  tertiary: 'hsl(214, 64%, 98%)',
-  x: 'hsl(208, 11%, 55%)',
-  y: 'hsl(192, 100%, 9%)',
-  footer: 'hsl(228, 45%, 44%)',
-  button: 'hsla(322, 100%, 66%, 0.8)',
+  primary: 'hsl(256, 26%, 20%)',
+  secondary: 'hsl(216, 30%, 68%)',
+  neutralOne: 'hsl(270, 9%, 17%)',
+  neutralTwo: 'hsl(273, 4%, 51%)',
+  neutralThree: 'hsl(0, 0%, 98%)',
+  fontSize: '16px',
 };
 
 export default mainTheme;

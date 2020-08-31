@@ -1,10 +1,19 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import Karla from '../fonts/Karla-Regular.ttf';
 
 export const GlobalStyles = createGlobalStyle`
 
+// Typography
+  @font-face {
+    font-family: 'Karla', sans-serif;
+    src: local('Karla'), local('Karla'),
+    url(${Karla}) format('truetype'); 
+    font-weight: 400;
+    font-style: normal;
+      };  
+
 // Reset
   * {
-
     /* Box sizing rules */
 *,
 *::before,
@@ -79,10 +88,6 @@ select {
   }
 }
 
-    /* reset */
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    outline: 0;
-  }
+  font-size: ${({ theme }) => theme.fontSize};
+  font-family: 'Karla', sans-serif;
 `;
