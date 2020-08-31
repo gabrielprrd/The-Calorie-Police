@@ -30,10 +30,19 @@ export const Header = styled.header`
 `;
 
 export const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+
   @media ${device.mobileL} {
     width: 100vw;
     padding: 20px;
     background: ${({ theme }) => theme.neutralThree};
+    justify-content: center;
+  }
+
+  img {
+    width: 2rem;
+    margin-right: 10px;
   }
 `;
 

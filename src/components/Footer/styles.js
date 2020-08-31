@@ -9,7 +9,7 @@ export const Footer = styled.footer`
   flex-direction: column;
   z-index: 1 !important;
   height: 200px;
-  width: 100vw;
+  width: 98vw;
 
   a {
     text-decoration: none;
@@ -28,8 +28,18 @@ export const UpperDiv = styled.div`
 `;
 
 export const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+
   @media ${device.mobileL} {
-    margin-bottom: 20px;
+    padding-bottom: 20px;
+    background: ${({ theme }) => theme.neutralThree};
+    justify-content: center;
+  }
+
+  img {
+    width: 2rem;
+    margin-right: 10px;
   }
 `;
 

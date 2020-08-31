@@ -6,6 +6,7 @@ import facebookIcon from '../../assets/svg/icon-facebook.svg';
 import instagramIcon from '../../assets/svg/icon-instagram.svg';
 import pinterestIcon from '../../assets/svg/icon-pinterest.svg';
 import twitterIcon from '../../assets/svg/icon-twitter.svg';
+import logo from '../../assets/img/logo.png';
 
 import { NavLink } from 'react-router-dom';
 
@@ -14,7 +15,12 @@ export default function Footer() {
     <S.Footer>
       <S.UpperDiv>
         <S.LogoContainer>
-          <NavLink to="/">The Calorie Police</NavLink>
+          <NavLink to="/">
+            <S.LogoContainer>
+              <img src={logo} />
+              <p>The Calorie Police</p>
+            </S.LogoContainer>
+          </NavLink>
         </S.LogoContainer>
         <S.SocialIconsContainer>
           <a href="https://github.com/gabrielprrd">
