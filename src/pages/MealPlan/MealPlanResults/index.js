@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MealPlanResults = ({ meals, nutrients }) => {
+export default function MealPlanResults({ meals, nutrients }) {
   const { calories, carbohydrates, fat, protein } = nutrients;
   const mealsList = meals.map((meal) => {
     return (
@@ -30,6 +30,4 @@ const MealPlanResults = ({ meals, nutrients }) => {
       {mealsList}
     </>
   );
-};
-
-export default MealPlanResults;
+}

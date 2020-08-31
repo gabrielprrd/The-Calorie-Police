@@ -1,23 +1,21 @@
-import React from 'react';
-import { Button, TextField } from '@material-ui/core';
-import { FormDiet } from '../../../styles';
+import React, { useContext } from 'react';
+import * as S from './styles';
 
-const DietForm = ({ handleChange, handleSubmit }) => {
+// Context
+import { QueryContext } from '../../../contexts/queryContext';
+
+export default function DietForm({ handleSubmit }) {
+  const { setQuery } = useContext(QueryContext);
+
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  };
+
   return (
-    <div>
-      <FormDiet onSubmit={handleSubmit}>
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          name="query"
-          onChange={handleChange}
-        />
-        <Button color="secondary" variant="contained" type="submit">
-          Search
-        </Button>
-      </FormDiet>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="query">Recipe: </label>
+      <input type="text" name="query" onChange={handleChange} />
+      <button type="submit">Search</button>
+    </form>
   );
-};
-
-export default DietForm;
+}

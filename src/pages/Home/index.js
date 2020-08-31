@@ -1,29 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import * as S from './styles';
+
+import { CaloriesContext } from '../../contexts/caloriesContext';
 
 // Components
 import UserForm from './UserForm/index';
 import CalorieResult from './CalorieResult/index';
-import UserPageInfo from './UserPageInfo/index';
+import HomeInfo from './HomeInfo/index';
 
-export default function UserPage() {
+export default function Home() {
   const [componentShouldShow, setComponentShouldShow] = useState(false);
-  const [dailyCalories, setDailyCalories] = useState();
+  const { dailyCalories } = useContext(CaloriesContext);
 
   useEffect(() => {
-    if (typeof Storage !== 'undefined') {
-      const fetchCalories = async () => {
-        try {
-          const fetchedDailyCalories = await JSON.parse(
-            localStorage.getItem('@calorie-police/userInfo')
-          ).dailyCalories;
-          setDailyCalories(fetchedDailyCalories);
-          setComponentShouldShow(true);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      fetchCalories();
+    if (dailyCalories > 0) {
+      setComponentShouldShow(true);
     }
   }, [dailyCalories]);
 
@@ -41,7 +32,7 @@ export default function UserPage() {
 
       <UserForm />
       {componentShouldShow && <CalorieResult dailyCalories={dailyCalories} />}
-      <UserPageInfo />
+      <HomeInfo />
     </>
   );
 }

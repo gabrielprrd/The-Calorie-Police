@@ -1,26 +1,34 @@
-import React, { useState } from 'react';
-import * as S from './styles';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
+// Components
 import MealPlanResults from './MealPlanResults/index';
+import Swal from 'sweetalert2';
+
+import { CaloriesContext } from '../../contexts/caloriesContext';
+import * as S from './styles';
 
 export default function MealPlan() {
   const [meals, setMeals] = useState();
   const [mealVisibility, setMealVisibility] = useState(false);
+  const { dailyCalories } = useContext(CaloriesContext);
 
   const showMeals = async () => {
     try {
-      const dailyCalories = JSON.parse(
-        localStorage.getItem('@calorie-police/userInfo')
-      ).dailyCalories;
-
       const response = await axios({
         method: 'post',
-        url: 'http://localhost:3333/getmealplan',
+        url: 'http://localhost:3333/mealplan',
         data: { dailyCalories },
       });
 
-      setMeals(response.data);
-      setMealVisibility(true);
+      if (response.data.length === 0) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Nothing found',
+        });
+      } else {
+        setMeals(response.data);
+        setMealVisibility(true);
+      }
     } catch (err) {
       console.log({ Error: err });
     }

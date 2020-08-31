@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import * as S from './styles';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+
+import * as S from './styles';
+import Swal from 'sweetalert2';
 
 import { INITIAL_USERINFO } from '../../../store/index';
 
 export default function UserForm() {
   const [userInfo, setUserInfo] = useState();
-  let userSchema = yup.object().shape({
+  const userSchema = yup.object().shape({
     name: yup.string().required('Name is required.'),
     gender: yup.string().required('Please select a gender.'),
     age: yup.number().required('Age is required.').positive().integer(),
@@ -37,6 +39,7 @@ export default function UserForm() {
     }
 
     let parsedActivity = parseFloat(activity);
+
     setUserInfo({
       name,
       gender,
@@ -48,7 +51,12 @@ export default function UserForm() {
       dailyCalories: (parsedActivity * updatedBasalMetabolism).toFixed(2),
     });
 
+    Swal.fire({
+      icon: 'success',
+      // text: `Your daily caloric need is ${dailyCalories} kcal`,
+    });
     localStorage.setItem('@calorie-police/userInfo', JSON.stringify(userInfo));
+    console.log(userInfo);
   };
 
   return (

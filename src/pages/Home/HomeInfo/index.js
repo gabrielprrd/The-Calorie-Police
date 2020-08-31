@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-const UserPageInfo = () => {
+export default function HomeInfo() {
   const { visibility, setVisibility } = useState('one');
 
   // talvez precisarei criar um state pra cada sessão
@@ -140,6 +140,4 @@ const UserPageInfo = () => {
       </S.InfoTabsDiv>
     </>
   );
-};
-
-export default UserPageInfo;
+}
