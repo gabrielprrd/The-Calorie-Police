@@ -11,8 +11,9 @@ import CalorieProvider from './contexts/caloriesContext';
 // Styles
 import 'typeface-roboto';
 import { GlobalStyles } from './assets/globalStyles/globalStyles';
+import AppContainer from './assets/globalStyles/AppContainer';
 
-// Components & Routing
+// Routing
 import { BrowserRouter, Route } from 'react-router-dom';
 
 // Components
@@ -32,12 +33,14 @@ export default function App() {
         <CalorieProvider>
           <BrowserRouter>
             <GlobalStyles />
-            <NavBar />
-            <Route exact path="/" component={Home} />
-            <Route path="/diets" component={DietSearcher} />
-            <Route path="/meal-plan" component={MealPlan} />
-            <Route path="/saved-recipes" component={SavedRecipes} />
-            <Footer />
+            <AppContainer>
+              <NavBar />
+              <Route exact path="/" component={Home} />
+              <Route path="/diets" component={DietSearcher} />
+              <Route path="/meal-plan" component={MealPlan} />
+              <Route path="/saved-recipes" component={SavedRecipes} />
+              <Footer />
+            </AppContainer>
           </BrowserRouter>
         </CalorieProvider>
       </QueryProvider>

@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Swal from 'sweetalert2';
-import styles from './styles';
 
+// Components
+import Swal from 'sweetalert2';
+
+// Styling
+import styles from './styles';
+import PageContainer from '../../assets/globalStyles/PageContainer';
+
+// Context
 import { CaloriesContext } from '../../contexts/caloriesContext';
 
 export default function SavedRecipes() {
@@ -95,7 +101,7 @@ export default function SavedRecipes() {
   });
 
   return (
-    <>
+    <PageContainer>
       <h2>Your recipes</h2>
       {savedRecipesVisibility ? (
         <div>
@@ -109,6 +115,6 @@ export default function SavedRecipes() {
         The daily caloric need to maintain your current weight is{' '}
         {dailyCalories} calories
       </h3>
-    </>
+    </PageContainer>
   );
 }

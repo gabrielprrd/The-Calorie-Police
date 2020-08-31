@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import * as S from './styles';
+import PageContainer from '../../assets/globalStyles/PageContainer';
 
+// Context
 import { CaloriesContext } from '../../contexts/caloriesContext';
 
 // Components
@@ -19,7 +21,7 @@ export default function Home() {
   }, [dailyCalories]);
 
   return (
-    <>
+    <PageContainer>
       <p>
         With the calorie intake calculator from The Calorie Police, we’ll help
         you calculate and understand your daily calorie intake needs. Our
@@ -33,6 +35,6 @@ export default function Home() {
       <UserForm />
       {componentShouldShow && <CalorieResult dailyCalories={dailyCalories} />}
       <HomeInfo />
-    </>
+    </PageContainer>
   );
 }

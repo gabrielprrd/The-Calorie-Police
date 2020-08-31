@@ -3,7 +3,7 @@ import device from '../../../assets/globalStyles/device';
 
 export const BurgerMenu = styled.div`
   display: none;
-  z-index: 99;
+  z-index: 2 !important;
   cursor: pointer;
   background: ${({ theme }) => theme.primary};
   padding: 10px;
@@ -24,6 +24,7 @@ export const Bar = styled.div`
   transition: 0.4s;
   transform: ${({ isMenuClicked }) =>
     isMenuClicked ? 'rotate(-45deg) translate(-9px, 6px)' : 'none'};
+  z-index: 99;
 `;
 
 export const Bar2 = styled(Bar)`

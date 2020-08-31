@@ -1,11 +1,16 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
+
+// Styling
+import PageContainer from '../../assets/globalStyles/PageContainer';
+import * as S from './styles';
+
 // Components
 import MealPlanResults from './MealPlanResults/index';
 import Swal from 'sweetalert2';
 
+// Context
 import { CaloriesContext } from '../../contexts/caloriesContext';
-import * as S from './styles';
 
 export default function MealPlan() {
   const [meals, setMeals] = useState();
@@ -35,7 +40,7 @@ export default function MealPlan() {
   };
 
   return (
-    <div>
+    <PageContainer>
       <h2>We suggest daily meal plans for your caloric needs!</h2>
       <button onClick={showMeals} type="button">
         Show me!
@@ -44,6 +49,6 @@ export default function MealPlan() {
       {mealVisibility && (
         <MealPlanResults meals={meals.meals} nutrients={meals.nutrients} />
       )}
-    </div>
+    </PageContainer>
   );
 }

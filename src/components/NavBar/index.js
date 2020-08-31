@@ -28,7 +28,7 @@ export default function NavBar() {
           <NavLink to="/saved-recipes">Your recipes</NavLink>
         </S.NavLinksContainer>
         <S.SvgContainer>
-          <img src={NavSvg} alt="background lines"></img>
+          <img src={NavSvg} alt="background lines" />
         </S.SvgContainer>
       </S.NavBar>
       <BurgerMenu isMenuClicked={isMenuClicked} toggleNav={toggleNav} />

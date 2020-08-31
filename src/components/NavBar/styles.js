@@ -7,6 +7,7 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  z-index: 2;
 
   a {
     text-decoration: none;
@@ -44,6 +45,7 @@ export const NavBar = styled.nav`
     height: 100vh;
     justify-content: space-between;
     flex: 1;
+    width: 100vw;
   }
 `;
 
@@ -65,6 +67,10 @@ export const SvgContainer = styled.div`
   display: none;
 
   @media ${device.mobileL} {
-    display: block;
+    display: flex;
+
+    img {
+      width: 100vw;
+    }
   }
 `;

@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import * as S from './styles';
 import axios from 'axios';
-import Swal from 'sweetalert2';
+
+// Styling
+import PageContainer from '../../assets/globalStyles/PageContainer';
+import * as S from './styles';
 
 // Context
 import { QueryContext } from '../../contexts/queryContext';
@@ -9,6 +11,7 @@ import { QueryContext } from '../../contexts/queryContext';
 // Components
 import DietForm from './DietForm';
 import DietResults from './DietResults/index';
+import Swal from 'sweetalert2';
 
 export default function DietSearcher() {
   const [foodList, setFoodList] = useState([]);
@@ -105,7 +108,7 @@ export default function DietSearcher() {
   }, [sessionRecipes]);
 
   return (
-    <div>
+    <PageContainer>
       <h3>
         Search and add the recipe you want to your diet and we will tell you if
         it fits your daily caloric need!
@@ -122,6 +125,6 @@ export default function DietSearcher() {
           saveRecipe={saveRecipe}
         />
       )}
-    </div>
+    </PageContainer>
   );
 }
