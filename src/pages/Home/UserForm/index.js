@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
+// Styling
 import * as S from './styles';
+
+// Components
 import Swal from 'sweetalert2';
+import Button from '../../../components/buttons/Button/index';
 
 import { INITIAL_USERINFO } from '../../../store/index';
 
@@ -61,7 +65,7 @@ export default function UserForm() {
   };
 
   return (
-    <>
+    <S.FormContainer>
       <Formik
         initialValues={INITIAL_USERINFO}
         validationSchema={userSchema}
@@ -69,54 +73,64 @@ export default function UserForm() {
         validator={() => ({})}
       >
         <Form>
-          <S.InputDiv>
-            <label htmlFor="name">Your name: </label>
-            <Field type="text" name="name" />
-            <ErrorMessage name="name" component="div" />
-          </S.InputDiv>
+          <S.FormOutterContainer>
+            <S.FormFlexContainer>
+              <S.InputDiv>
+                <label htmlFor="name">Your name: </label>
+                <Field type="text" name="name" />
+                <ErrorMessage name="name" component="div" />
+              </S.InputDiv>
+
+              <S.InputDiv>
+                <label htmlFor="gender">Your gender: </label>
+                <Field as="select" name="gender">
+                  <option name="Male">Male</option>
+                  <option name="Female">Female</option>
+                </Field>
+              </S.InputDiv>
+
+              <S.InputDiv>
+                <label htmlFor="age">Your age: </label>
+                <Field type="number" min="1" name="age" />
+                <ErrorMessage name="age" component="div" />
+              </S.InputDiv>
+            </S.FormFlexContainer>
+
+            <S.FormFlexContainer>
+              <S.InputDiv>
+                <label htmlFor="height">Your height (cm): </label>
+                <Field type="number" min="1" name="height" />
+                <ErrorMessage name="height" component="div" />
+              </S.InputDiv>
+
+              <S.InputDiv>
+                <label htmlFor="weight">Your weight (kg): </label>
+                <Field type="number" min="1" name="weight" />
+                <ErrorMessage name="weight" component="div" />
+              </S.InputDiv>
+
+              <S.InputDiv>
+                <label htmlFor="activity">Exercise level: </label>
+                <Field component="select" name="activity">
+                  <option value={1.2}>Sedentary</option>
+                  <option value={1.375}>Light exercises (1-3 days/week)</option>
+                  <option value={1.55}>
+                    Moderate exercises (3-5 days/week)
+                  </option>
+                  <option value={1.725}>Heavy exercises (5-7 days/week)</option>
+                </Field>
+                <ErrorMessage name="activity" component="div" />
+              </S.InputDiv>
+            </S.FormFlexContainer>
+          </S.FormOutterContainer>
 
           <S.InputDiv>
-            <label htmlFor="gender">Your gender: </label>
-            <Field as="select" name="gender">
-              <option name="Male">Male</option>
-              <option name="Female">Female</option>
-            </Field>
-          </S.InputDiv>
-
-          <S.InputDiv>
-            <label htmlFor="age">Your age: </label>
-            <Field type="number" min="1" name="age" />
-            <ErrorMessage name="age" component="div" />
-          </S.InputDiv>
-
-          <S.InputDiv>
-            <label htmlFor="height">Your height: </label>
-            <Field type="number" min="1" name="height" />
-            <ErrorMessage name="height" component="div" />
-          </S.InputDiv>
-
-          <S.InputDiv>
-            <label htmlFor="weight">Your weight: </label>
-            <Field type="number" min="1" name="weight" />
-            <ErrorMessage name="weight" component="div" />
-          </S.InputDiv>
-
-          <S.InputDiv>
-            <label htmlFor="activity">Exercise level: </label>
-            <Field component="select" name="activity">
-              <option value={1.2}>Sedentary</option>
-              <option value={1.375}>Light exercises (1-3 days/week)</option>
-              <option value={1.55}>Moderate exercises (3-5 days/week)</option>
-              <option value={1.725}>Heavy exercises (5-7 days/week)</option>
-            </Field>
-            <ErrorMessage name="activity" component="div" />
-          </S.InputDiv>
-
-          <S.InputDiv>
-            <button type="submit">Submit</button>
+            <Button type="submit" props={'Submit'}>
+              Submit
+            </Button>
           </S.InputDiv>
         </Form>
       </Formik>
-    </>
+    </S.FormContainer>
   );
 }

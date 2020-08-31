@@ -17,7 +17,7 @@ export default function Footer() {
         <S.LogoContainer>
           <NavLink to="/">
             <S.LogoContainer>
-              <img src={logo} />
+              <img src={logo} alt="logotype" />
               <p>The Calorie Police</p>
             </S.LogoContainer>
           </NavLink>

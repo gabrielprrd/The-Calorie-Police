@@ -24,7 +24,7 @@ export default function NavBar() {
     <S.Header isMenuClicked={isMenuClicked}>
       <NavLink to="/">
         <S.LogoContainer>
-          <img src={logo} />
+          <img src={logo} alt="logotype" />
           <p>The Calorie Police</p>
         </S.LogoContainer>
       </NavLink>
