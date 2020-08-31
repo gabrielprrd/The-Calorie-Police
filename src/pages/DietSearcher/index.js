@@ -96,7 +96,11 @@ export default function DietSearcher() {
 
     fetchLocalStorageRecipes();
     if (sessionRecipes.length > 0) {
-      setRecipeToLocalStorage([...localStorageRecipes, ...sessionRecipes]);
+      if (localStorageRecipes !== null) {
+        setRecipeToLocalStorage([...localStorageRecipes, ...sessionRecipes]);
+      } else {
+        setRecipeToLocalStorage(sessionRecipes);
+      }
     }
   }, [sessionRecipes]);
 

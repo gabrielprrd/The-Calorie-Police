@@ -39,6 +39,7 @@ export default function UserForm() {
     }
 
     let parsedActivity = parseFloat(activity);
+    const dailyCalories = (parsedActivity * updatedBasalMetabolism).toFixed(2);
 
     setUserInfo({
       name,
@@ -48,12 +49,12 @@ export default function UserForm() {
       age,
       activity: parsedActivity,
       basalMetabolism: updatedBasalMetabolism,
-      dailyCalories: (parsedActivity * updatedBasalMetabolism).toFixed(2),
+      dailyCalories,
     });
 
     Swal.fire({
       icon: 'success',
-      // text: `Your daily caloric need is ${dailyCalories} kcal`,
+      text: `Your daily caloric need is ${dailyCalories} kcal`,
     });
     localStorage.setItem('@calorie-police/userInfo', JSON.stringify(userInfo));
     console.log(userInfo);
